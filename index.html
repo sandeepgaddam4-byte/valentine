@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Be My Valentine 💖</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: 'Segoe UI', sans-serif;
+  overflow: hidden;
+}
+
+.container {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+}
+
+.heart {
+  font-size: 5rem;
+  animation: beat 1s infinite alternate;
+  margin-bottom: 30px;
+}
+
+@keyframes beat {
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
+}
+
+button {
+  padding: 14px 36px;
+  font-size: 1.3rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+#yesBtn {
+  background: #ff2f92;
+  color: white;
+}
+
+#noBtn {
+  background: #ffffffcc;
+  color: #333;
+  margin-left: 15px;
+  position: relative;
+}
+
+#message {
+  margin-top: 30px;
+  font-size: 1.6rem;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="main">
+  <h1>💖 Will You Be My Valentine? 💖</h1>
+  <div class="heart">❤️</div>
+
+  <button id="yesBtn">YES 😍</button>
+  <button id="noBtn">NO 🙈</button>
+
+  <div id="message"></div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const message = document.getElementById("message");
+const main = document.getElementById("main");
+
+function moveNoButton() {
+  const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+  const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+  noBtn.style.position = "absolute";
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// NO button escapes
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("touchstart", moveNoButton);
+
+// YES click romantic message
+yesBtn.addEventListener("click", () => {
+  main.innerHTML = `
+    <div class="heart">💞</div>
+    <div id="message">
+      <p>From the moment you said YES,</p>
+      <p>my heart chose you all over again ❤️</p>
+      <p>You are my favorite thought,</p>
+      <p>my happiest place,</p>
+      <p>and my forever Valentine 💘</p>
+      <p>Happy Valentine’s Day 🌹</p>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
